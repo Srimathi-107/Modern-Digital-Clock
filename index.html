@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
+        rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="background-shape shape-one"></div>
+    <div class="background-shape shape-two"></div>
+
+    <main class="parent">
+
+        <div class="clock-icon">
+            <i class="ri-time-line"></i>
+        </div>
+
+        <p class="heading">DIGITAL CLOCK</p>
+
+        <div class="live-status">
+            <span class="status-dot"></span>
+            LIVE LOCAL TIME
+        </div>
+
+        <p id="time">00:00:00 AM</p>
+
+        <div class="date-container">
+            <i class="ri-calendar-line"></i>
+            <span id="date"></span>
+        </div>
+
+        <button id="day">
+            <i class="ri-sun-line"></i>
+            <span>Monday</span>
+        </button>
+
+        <div class="divider"></div>
+
+        <div class="switchdiv">
+            <button id="switchhoursformat">
+                <i class="ri-refresh-line"></i>
+                Switch Format
+            </button>
+
+            <button id="theme" aria-label="Toggle dark mode">
+                <i class="ri-moon-line" id="themebtn"></i>
+            </button>
+        </div>
+
+        <p class="footer-text">
+            <i class="ri-flashlight-line"></i>
+            Every second, perfectly on time.
+        </p>
+
+    </main>
+
+    <script src="main.js"></script>
+</body>
+</html>

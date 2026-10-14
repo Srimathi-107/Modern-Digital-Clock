@@ -1,0 +1,475 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --accent: #8b7cff;
+    --accent-light: #b6aaff;
+    --text: #ffffff;
+    --muted: #c7c5e2;
+    --card-bg: rgba(20, 19, 48, 0.72);
+    --card-border: rgba(255, 255, 255, 0.15);
+    --button-bg: rgba(255, 255, 255, 0.09);
+}
+
+body {
+    min-height: 100vh;
+    padding: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+
+    background:
+        radial-gradient(ellipse at top left, #34266b 0%, transparent 45%),
+        radial-gradient(ellipse at bottom right, #163f69 0%, transparent 45%),
+        linear-gradient(135deg, #0c0b1c, #17142e 55%, #101b31);
+
+    transition: background 0.5s ease;
+}
+
+/* Background decoration */
+
+.background-shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(2px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.shape-one {
+    width: 280px;
+    height: 280px;
+    top: 8%;
+    left: 12%;
+    background: rgba(121, 91, 255, 0.22);
+    box-shadow: 0 0 100px rgba(121, 91, 255, 0.12);
+}
+
+.shape-two {
+    width: 320px;
+    height: 320px;
+    bottom: 4%;
+    right: 10%;
+    background: rgba(0, 195, 255, 0.13);
+    box-shadow: 0 0 100px rgba(0, 195, 255, 0.1);
+}
+
+/* Main clock card */
+
+.parent {
+    width: 100%;
+    max-width: 510px;
+    padding: 42px 40px 30px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    position: relative;
+    z-index: 1;
+
+    background: var(--card-bg);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+
+    border: 1px solid var(--card-border);
+    border-radius: 30px;
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+    transition: background 0.4s ease, border 0.4s ease;
+}
+
+/* Clock icon */
+
+.clock-icon {
+    width: 62px;
+    height: 62px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 30px;
+    color: white;
+
+    border-radius: 20px;
+    background: linear-gradient(135deg, #9a83ff, #6655e8);
+
+    box-shadow: 0 8px 30px rgba(125, 100, 255, 0.35);
+}
+
+/* Heading */
+
+.heading {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 5px;
+    color: var(--muted);
+}
+
+/* Live status */
+
+.live-status {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    padding: 8px 13px;
+    border-radius: 50px;
+
+    color: #a7f3d0;
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(52, 211, 153, 0.18);
+
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    background: #34d399;
+    border-radius: 50%;
+    box-shadow: 0 0 12px #34d399;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    50% {
+        opacity: 0.4;
+        transform: scale(0.8);
+    }
+}
+
+/* Digital time */
+
+.parent #time {
+    width: 100%;
+    text-align: center;
+    white-space: nowrap;
+
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(36px, 7vw, 55px);
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 1.5;
+
+    color: #ffffff;
+
+    text-shadow:
+        0 0 12px rgba(164, 145, 255, 0.65),
+        0 0 35px rgba(124, 103, 255, 0.3);
+}
+
+/* Date */
+
+.date-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.date-container i {
+    font-size: 18px;
+    color: var(--accent-light);
+}
+
+/* Day button */
+
+.parent #day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    min-width: 130px;
+    padding: 11px 22px;
+
+    border: 1px solid var(--card-border);
+    border-radius: 50px;
+
+    background: var(--button-bg);
+    color: var(--text);
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.parent #day i {
+    color: #fbbf24;
+    font-size: 17px;
+}
+
+.parent #day:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent-light);
+    background: rgba(139, 124, 255, 0.15);
+}
+
+/* Divider */
+
+.divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.17),
+        transparent
+    );
+    margin-top: 3px;
+}
+
+/* Bottom controls */
+
+.switchdiv {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+}
+
+/* Format button */
+
+.parent #switchhoursformat {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    min-height: 48px;
+    padding: 0 20px;
+
+    border: 1px solid rgba(139, 124, 255, 0.4);
+    border-radius: 14px;
+
+    background: linear-gradient(
+        135deg,
+        rgba(139, 124, 255, 0.22),
+        rgba(102, 85, 232, 0.12)
+    );
+
+    color: var(--text);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.parent #switchhoursformat i {
+    font-size: 17px;
+    color: var(--accent-light);
+}
+
+.parent #switchhoursformat:hover {
+    transform: translateY(-3px);
+    background: rgba(139, 124, 255, 0.3);
+    box-shadow: 0 8px 25px rgba(139, 124, 255, 0.15);
+}
+
+/* Theme button */
+
+.parent #theme {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+
+    background: var(--button-bg);
+    color: var(--text);
+
+    font-size: 21px;
+    cursor: pointer;
+
+    transition: 0.35s ease;
+}
+
+.parent #theme:hover {
+    transform: rotate(12deg) scale(1.06);
+    background: rgba(139, 124, 255, 0.2);
+}
+
+/* Footer */
+
+.footer-text {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    margin-top: 3px;
+
+    color: var(--muted);
+    font-size: 11px;
+    letter-spacing: 0.3px;
+    opacity: 0.8;
+}
+
+.footer-text i {
+    color: #fbbf24;
+    font-size: 15px;
+}
+
+/* Light theme */
+
+body:not(.dark) {
+    --text: #28264a;
+    --muted: #777493;
+    --card-bg: rgba(255, 255, 255, 0.78);
+    --card-border: rgba(90, 75, 160, 0.15);
+    --button-bg: rgba(110, 94, 190, 0.07);
+
+    background:
+        radial-gradient(ellipse at top left, #e3dcff 0%, transparent 48%),
+        radial-gradient(ellipse at bottom right, #c7efff 0%, transparent 48%),
+        linear-gradient(135deg, #f5f3ff, #edf5ff);
+}
+
+body:not(.dark) .parent {
+    box-shadow:
+        0 30px 80px rgba(67, 56, 130, 0.13),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+body:not(.dark) .clock-icon {
+    box-shadow: 0 8px 30px rgba(125, 100, 255, 0.25);
+}
+
+body:not(.dark) #time {
+    color: #39316c;
+    text-shadow: 0 0 20px rgba(124, 103, 255, 0.15);
+}
+
+body:not(.dark) .live-status {
+    color: #087b56;
+    background: rgba(16, 185, 129, 0.09);
+}
+
+body:not(.dark) #switchhoursformat {
+    color: #44368b;
+    background: rgba(139, 124, 255, 0.1);
+}
+
+body:not(.dark) #switchhoursformat i {
+    color: #6655c9;
+}
+
+body:not(.dark) #day:hover,
+body:not(.dark) #theme:hover {
+    background: rgba(139, 124, 255, 0.12);
+}
+
+/* Responsive design */
+
+@media (max-width: 520px) {
+    body {
+        padding: 18px;
+    }
+
+    .parent {
+        max-width: 400px;
+        padding: 32px 22px 25px;
+        gap: 18px;
+        border-radius: 25px;
+    }
+
+    .clock-icon {
+        width: 55px;
+        height: 55px;
+        font-size: 26px;
+        border-radius: 17px;
+    }
+
+    .heading {
+        font-size: 11px;
+        letter-spacing: 4px;
+    }
+
+    .parent #time {
+        font-size: clamp(29px, 8.3vw, 42px);
+        letter-spacing: 0;
+    }
+
+    .date-container {
+        font-size: 13px;
+    }
+
+    .parent #switchhoursformat {
+        padding: 0 14px;
+        font-size: 11px;
+    }
+
+    .parent #theme {
+        width: 45px;
+        height: 45px;
+    }
+
+    .footer-text {
+        font-size: 10px;
+        text-align: center;
+    }
+
+    .shape-one {
+        width: 180px;
+        height: 180px;
+        left: -60px;
+    }
+
+    .shape-two {
+        width: 200px;
+        height: 200px;
+        right: -70px;
+    }
+}
+
+@media (max-width: 350px) {
+    .parent {
+        padding: 28px 15px 22px;
+    }
+
+    .parent #time {
+        font-size: 27px;
+    }
+
+    .switchdiv {
+        gap: 8px;
+    }
+
+    .parent #switchhoursformat {
+        padding: 0 10px;
+        gap: 5px;
+    }
+}
